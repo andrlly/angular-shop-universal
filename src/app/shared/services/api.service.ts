@@ -7,8 +7,8 @@ import {TransferHttp} from '../../../modules/transfer-http/transfer-http';
 @Injectable()
 export class ApiService {
 
-    private apiUrl = 'http://ukiegoods.loc/';
-    // private baseUrl = 'http://news.hbmdev.com/';
+    // private apiUrl = 'http://ukiegoods.loc/';
+    private apiUrl = 'http://news.hbmdev.com/';
 
     constructor(private http: TransferHttp,
                 @Inject('ORIGIN_URL') public baseUrl: string
