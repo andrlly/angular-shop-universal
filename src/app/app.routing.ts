@@ -4,7 +4,7 @@ import { MetaGuard } from '@ngx-meta/core';
 // import {HomeComponent} from './home/home.component';
 // import {MockServerBrowserComponent} from './mock-server-browser/mock-server-browser.component';
 import {ShopModule} from './shop/shop.module';
-import {ProductsComponent} from './shop/products/products.component';
+import { TransferBackComponent } from './transfer-back/transfer-back.component';
 
 const routes: Routes = [
     {path: 'shop', loadChildren: './shop/shop.module#ShopModule', pathMatch: 'full',
@@ -18,7 +18,17 @@ const routes: Routes = [
         },
         canActivateChild: [MetaGuard],
     },
-    {path: 'back', loadChildren: './transfer-back/transfer-back.module#TransferBackModule'},
+    {path: 'back', loadChildren: './transfer-back/transfer-back.module#TransferBackModule',
+    data: {
+        // for override default meta
+        meta: {
+            title: 'home title',
+            override: true,
+            description: 'home description'
+        }
+    },
+    canActivateChild: [MetaGuard]
+},
     // {path: 'products', loadChildren: './shop/products/products.module#ProductsModule'},
   // {
   //   path: '', component: HomeComponent, pathMatch: 'full',
@@ -37,7 +47,7 @@ const routes: Routes = [
   // { path: 'mock', loadChildren: './mock-server-browser/mock-server-browser.module#MockServerBrowserModule' },
   // { path: 'mock', component: MockServerBrowserComponent },
   // with meta
-  // { path: 'back', component: TransferBackComponent},
+//   { path: 'back', component: TransferBackComponent},
 ];
 // must use {initialNavigation: 'enabled'}) - for one load page, without reload
 export const AppRoutes = RouterModule.forRoot(routes, { initialNavigation: 'enabled' });

@@ -1,17 +1,17 @@
-import {Inject, Injectable} from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {TransferHttp} from '../../../modules/transfer-http/transfer-http';
+import { TransferHttp } from '../../../modules/transfer-http/transfer-http';
 
 @Injectable()
 export class ApiService {
 
-    private apiUrl = 'http://ukiegoods.loc/';
-    // private baseUrl = 'http://news.hbmdev.com/';
+    // private apiUrl = 'http://news.hbmdev.com/';
+    private apiUrl = 'http://news.hbmdev.com/';
 
     constructor(private http: TransferHttp,
-                @Inject('ORIGIN_URL') public baseUrl: string
+        @Inject('ORIGIN_URL') public baseUrl: string
     ) {
     }
 
@@ -36,7 +36,7 @@ export class ApiService {
     }
 
     public put(url: string = '', body: Object = {}): Observable<any> {
-        return this.http.put(this.getUrl(url), JSON.stringify(body), {headers: this.setHeaders()});
+        return this.http.put(this.getUrl(url), JSON.stringify(body), { headers: this.setHeaders() });
     }
 
 }

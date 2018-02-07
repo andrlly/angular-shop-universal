@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ShopRoutes} from './shop-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop.component';
-import { ProductsComponent } from './products/products.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeService } from '../shared/services/home.service';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
@@ -28,7 +27,6 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
     declarations: [
         HomeComponent,
         ShopComponent,
-        ProductsComponent,
         HeaderComponent,
         ProductDetailComponent,
         // CartComponent,

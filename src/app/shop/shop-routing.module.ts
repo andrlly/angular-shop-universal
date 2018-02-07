@@ -1,3 +1,4 @@
+import { ProductsModule } from './products/products.module';
 import {HomeComponent} from './home/home.component';
 import {Routes, RouterModule} from '@angular/router';
 import {ShopComponent} from './shop.component';
@@ -11,7 +12,7 @@ const routes: Routes = [
             // {path: 'cart', component: CartComponent, resolve: {products: CartResolver}},
             // {path: 'checkout', component: CheckoutComponent, resolve: {products: CartResolver}},
             // {path: 'thanks', component: ThanksComponent},
-            {path: 'products', component: ProductsComponent},
+            {path: 'products',  loadChildren: './products/products.module#ProductsModule'},
             {path: 'products/:id', component: ProductDetailComponent}
         ]
     },

@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
         //         this.updated_at = config[0].updated_at;
         //     });
 
-        this.http.get('http://ukiegoods.loc/configs').subscribe(config => {
+        this.http.get('http://news.hbmdev.com/configs').subscribe(config => {
             this.body = config[0].body;
         });
 

@@ -1,6 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {ProductsService} from '../../shared/services/products.service';
-import {Product} from '../../shared/models/product.model';
+import { Component, Inject, OnInit } from '@angular/core';
+import { ProductsService } from '../../shared/services/products.service';
+import { Product } from '../../shared/models/product.model';
 
 @Component({
     selector: 'app-products',
@@ -11,8 +11,7 @@ export class ProductsComponent implements OnInit {
 
     products: Product[] = [];
 
-    constructor(private productsService: ProductsService,
-                @Inject('ORIGIN_URL') public baseUrl: string) {
+    constructor(private productsService: ProductsService) {
     }
 
     ngOnInit() {
@@ -21,6 +20,4 @@ export class ProductsComponent implements OnInit {
                 this.products = products;
             });
     }
-
-
 }
