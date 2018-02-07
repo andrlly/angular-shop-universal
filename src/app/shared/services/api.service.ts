@@ -8,6 +8,7 @@ import { TransferHttp } from '../../../modules/transfer-http/transfer-http';
 export class ApiService {
 
     // private apiUrl = 'http://news.hbmdev.com/';
+    // private apiUrl = 'http://ukiegoods.loc/';
     private apiUrl = 'http://news.hbmdev.com/';
 
     constructor(private http: TransferHttp,
