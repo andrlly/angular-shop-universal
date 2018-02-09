@@ -39,6 +39,8 @@
     "@ngx-meta/core": "5.0.0",
     "@ngx-translate/core": "9.1.1",
     "@ngx-translate/http-loader": "2.0.1",
+    "bootstrap": "^4.0.0",
+    "bootswatch": "^4.0.0",
     "cookie-parser": "1.4.3",
     "core-js": "2.5.3",
     "ngx-cookie-service": "1.0.10",

@@ -1,21 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductsComponent } from './products.component';
-import { ProductsRoutes } from './products.routing';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ProductsComponent} from './products.component';
+import {RouterModule, Routes} from '@angular/router';
+
+const routes: Routes = [
+    {path: '', component: ProductsComponent},
+];
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        ProductsRoutes
+        RouterModule.forChild(routes)
     ],
     declarations: [
         ProductsComponent,
-    ]
-    // providers: [HomeService, StorageService, CartResolver],
+    ],
+    providers: []
 })
 export class ProductsModule {
 }

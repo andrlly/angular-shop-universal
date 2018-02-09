@@ -1,0 +1,60 @@
+
+<!--<ng-flash-message></ng-flash-message>-->
+
+<div class="title-block">
+    <h3 class="title">
+        <a [routerLink]="['/admin/products']"><i class="glyphicon glyphicon-chevron-left"></i></a>
+        Edit {{ id }}
+        <span class="sparkline bar"></span>
+    </h3>
+</div>
+<hr>
+<form [formGroup]="epForm" (ngSubmit)="editProductSubmit()">
+    <div class="form-group">
+        <label for="name">Product Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name" formControlName="name"
+               [value]="name">
+        <div class="alert alert-danger" role="alert" *ngIf="epForm.get('name').invalid && epForm.get('name').touched">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Name is empty!
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" formControlName="description"
+                  [value]="description" rows="3"></textarea>
+        <div class="alert alert-danger" role="alert" *ngIf="epForm.get('description').invalid && epForm.get('description').touched">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Description is empty!
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="category_id">Category</label>
+        <select class="form-control" id="category_id" name="category_id" formControlName="category_id">
+            <option *ngFor="let cat of categories;" [value]="cat.id">{{ cat.name }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input id="price" name="price" type="number" formControlName="price" [value]="price" min="0"/>
+        <div class="alert alert-danger" role="alert" *ngIf="epForm.get('price').invalid && epForm.get('price').touched">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Price is empty!
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input type="file" id="image" (change)="onFileChange($event)" #fileInput>
+        <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>
+        <hr>
+        <div>
+            <img width="150" src="http://ukiegoods.loc/uploads/products/{{id}}.jpg" alt="">
+        </div>
+    </div>
+    <hr>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-danger" (click)="deleteProduct()">Delete</button>
+</form>

@@ -17,6 +17,11 @@ import {ShopModule} from './shop/shop.module';
 import {HomeService} from './shared/services/home.service';
 import {ApiService} from './shared/services/api.service';
 import {ProductsService} from './shared/services/products.service';
+import {AdminModule} from './admin/admin.module';
+import {AuthGuard} from './admin/auth/auth.guard';
+import {CategoriesService} from './shared/services/categories.service';
+import {OrdersService} from './shared/services/order.service';
+import {SharedModule} from './shared/shared.module';
 
 export function metaFactory(): MetaLoader {
   const setting: MetaSettings = {
@@ -50,6 +55,8 @@ export function httpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     RouterModule,
     AppRoutes,
+    AdminModule,
+    SharedModule,
     ShopModule,
     TransferHttpModule,
     BrowserAnimationsModule,
@@ -67,7 +74,7 @@ export function httpLoaderFactory(http: HttpClient) {
       }
     )
   ],
-  providers: [CookieService, HomeService, ApiService, ProductsService],
+  providers: [CookieService, ApiService, AuthGuard, ProductsService, CategoriesService, OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

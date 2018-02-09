@@ -15,8 +15,6 @@ export class HomeComponent implements OnInit {
 
     body: string;
     updated_at: any;
-    result: any;
-    resultPost: any;
 
     constructor(
         private homeService: HomeService,
@@ -28,27 +26,12 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        //
-        // if (isPlatformBrowser(this.platformId)) {
-        //     console.log('isPlatformBrowser');
-        //     let item = {key1: 'value1', key2: 'valu2' };
-        //     localStorage.setItem( 'value1', JSON.stringify(item) );
-        // }
 
-        // this.appStorage.setItem('test', 'test2');
-        // const resultCookie = this.appStorage.getItem('test');
-        // console.log(resultCookie);
-
-        // this.homeService.getConfigs()
-        //     .subscribe((config: Home) => {
-        //         this.body = config[0].body;
-        //         this.updated_at = config[0].updated_at;
-        //     });
-
-        this.http.get('http://news.hbmdev.com/configs').subscribe(config => {
-            this.body = config[0].body;
-        });
-
+        this.homeService.getConfigs()
+            .subscribe((config: Home) => {
+                this.body = config[0].body;
+                this.updated_at = config[0].updated_at;
+            });
     }
 
 

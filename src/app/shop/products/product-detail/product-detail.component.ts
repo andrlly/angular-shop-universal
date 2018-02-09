@@ -20,8 +20,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   category_id: number;
   catName: string;
 
-  s1: Subscription;
-  s2: Subscription;
+  // s1: Subscription;
+  // s2: Subscription;
 
   constructor(
       private route: ActivatedRoute,
@@ -31,8 +31,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-      this.s1 = this.route.params.subscribe(params => this.id = params['id']);
-      this.s2 = this.productsService.getProductById(this.id)
+      this.route.params.subscribe(params => this.id = params['id']);
+      this.productsService.getProductById(this.id)
           .subscribe( (product: Product) => {
               this.name = product.name;
               this.price = product.price;
@@ -54,8 +54,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
 
     ngOnDestroy() {
-    if (this.s1) this.s1.unsubscribe();
-    if (this.s2) this.s2.unsubscribe();
+    // if (this.s1) this.s1.unsubscribe();
+    // if (this.s2) this.s2.unsubscribe();
   }
 
 }

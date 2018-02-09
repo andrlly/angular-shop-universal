@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-mock',
   templateUrl: './mock-browser.component.html',
-  styleUrls: ['./mock-browser.component.scss']
+  styleUrls: ['./mock-browser.component.css']
 })
 export class MockBrowserComponent implements OnInit {
 
