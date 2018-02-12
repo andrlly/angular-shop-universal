@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ProductDetailComponent} from './product-detail.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FlashMessagesModule } from "ngx-flash-messages";
 
 const routes: Routes = [
     {path: '', component: ProductDetailComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        FlashMessagesModule,
         RouterModule.forChild(routes)
     ],
     declarations: [

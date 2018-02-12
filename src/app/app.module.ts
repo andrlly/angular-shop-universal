@@ -13,8 +13,8 @@ import { MetaStaticLoader } from '@ngx-meta/core';
 import { PageTitlePositioning } from '@ngx-meta/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FlashMessagesModule } from "ngx-flash-messages";
 import {ShopModule} from './shop/shop.module';
-import {HomeService} from './shared/services/home.service';
 import {ApiService} from './shared/services/api.service';
 import {ProductsService} from './shared/services/products.service';
 import {AdminModule} from './admin/admin.module';
@@ -48,7 +48,7 @@ export function httpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
@@ -58,6 +58,7 @@ export function httpLoaderFactory(http: HttpClient) {
     AdminModule,
     SharedModule,
     ShopModule,
+    FlashMessagesModule,
     TransferHttpModule,
     BrowserAnimationsModule,
     MetaModule.forRoot({

@@ -1,10 +1,12 @@
 <div class="container">
 
-    <!--<div *ngIf="isEmptyCart">-->
-    <!--карта пуста-->
-    <!--</div>-->
+    <div *ngIf="isEmptyCart" class="text-center">
+       <h2>Cart is empty</h2>
+        <a [routerLink]="['/products']" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i>
+            Go Shopping</a>
+    </div>
 
-    <table id="cart" class="table table-hover table-condensed">
+    <table id="cart" class="table table-hover table-condensed" *ngIf="!isEmptyCart">
         <thead>
         <tr>
             <th style="width:50%">Product</th>

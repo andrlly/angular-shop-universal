@@ -1,6 +1,4 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import { ProductsService } from '../../shared/services/products.service';
-import { Product } from '../../shared/models/product.model';
 
 import 'rxjs/add/operator/map';
 import { StorageService } from '../../shared/services/storage.service';
@@ -29,7 +27,7 @@ export class CartComponent implements OnInit {
         this.appStorage.removeItem('checkout');
         this.route.data
             .subscribe((data: Data) => {
-                this.isEmptyCart = data.lenght ? false : true;
+                this.isEmptyCart = data.products[0] ? false : true;
                     this.products = this.cart.sort((a, b) => {
                         +a.id > +b.id ? 1 : -1;
                     });

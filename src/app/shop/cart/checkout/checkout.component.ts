@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import { ActivatedRoute, Data, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-// import { NgFlashMessageService } from 'ng-flash-messages';
 
 import { OrdersService } from '../../../shared/services/order.service';
 import { AuthService } from '../../../admin/auth/auth.service';
 import {AppStorage} from '../../../../forStorage/universal.inject';
+import { FlashMessagesService } from "ngx-flash-messages";
 
 @Component({
     selector: 'app-checkout',
@@ -24,6 +24,7 @@ export class CheckoutComponent implements OnInit {
     constructor(private router: Router,
                 private ordersService: OrdersService,
                 private authService: AuthService,
+                private flashMessagesService: FlashMessagesService,
                 @Inject(AppStorage) private appStorage: Storage,
     ) {
     }
@@ -72,12 +73,10 @@ export class CheckoutComponent implements OnInit {
                     product_data.user_id = +res;
                     this.ordersService.addOrder(product_data)
                         .subscribe(order =>  {
-                            // this.ngFlashMessageService.showFlashMessage({
-                            //     messages: [`Thanks you for order`],
-                            //     dismissible: true,
-                            //     timeout: 3000,
-                            //     type: 'success'
-                            // });
+                            this.flashMessagesService.show(`Thanks you for order`, {
+                                classes: ['alert', 'alert-success'], // You can pass as many classes as you need
+                                timeout: 3000, // Default is 3000
+                            });
                             setTimeout(() => {
                                 this.router.navigate(['/thanks']);
                             }, 3500);
@@ -86,12 +85,10 @@ export class CheckoutComponent implements OnInit {
         } else {
             this.ordersService.addOrder(product_data)
                 .subscribe(order => {
-                    // this.ngFlashMessageService.showFlashMessage({
-                    //     messages: [`Thanks you for order`],
-                    //     dismissible: true,
-                    //     timeout: 3000,
-                    //     type: 'success'
-                    // });
+                    this.flashMessagesService.show(`Thanks you for order`, {
+                        classes: ['alert', 'alert-success'], // You can pass as many classes as you need
+                        timeout: 3000, // Default is 3000
+                    });
                     setTimeout(() => {
                         this.router.navigate(['/thanks']);
                     }, 3500);

@@ -38,7 +38,6 @@ export class AuthService {
         const route = type === 'login' ? '/auth' : '/registration';
         return this.apiService.post('user' + route, credentials)
             .map((user) => {
-                console.log(user);
                 this.appStorage.setItem('user', JSON.stringify(user.user_id));
                 this.user_id = user.user_id;
                 return user.user_id;

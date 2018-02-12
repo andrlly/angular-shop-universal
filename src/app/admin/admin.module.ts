@@ -13,9 +13,8 @@ import {AddProductComponent} from './products/add-product/add-product.component'
 import {CategoriesComponent} from './categories/categories.component';
 import {CategoryEditorComponent} from './categories/category-editor/category-editor.component';
 import {OrderDetailComponent} from './orders/order-detail/order-detail.component';
-import {HomeService} from '../shared/services/home.service';
-import {AuthGuard} from './auth/auth.guard';
 import {AuthService} from './auth/auth.service';
+import { FlashMessagesModule } from "ngx-flash-messages";
 
 @NgModule({
     imports: [
@@ -23,7 +22,7 @@ import {AuthService} from './auth/auth.service';
         AdminRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        // NgFlashMessagesModule
+        FlashMessagesModule
     ],
     declarations: [
         AdminHeaderComponent,

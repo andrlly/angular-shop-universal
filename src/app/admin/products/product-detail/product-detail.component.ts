@@ -2,12 +2,12 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs/Subscription";
-// import { NgFlashMessageService, NgFlashMessagesModule } from "ng-flash-messages";
 
 import { Product } from "../../../shared/models/product.model";
 import { ProductsService } from "../../../shared/services/products.service";
 import { Category } from "../../../shared/models/category.model";
 import { CategoriesService } from "../../../shared/services/categories.service";
+import { FlashMessagesService } from "ngx-flash-messages";
 
 @Component({
     selector: 'app-product-detail',
@@ -35,7 +35,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
-                // private ngFlashMessageService: NgFlashMessageService,
+                private flashMessagesService: FlashMessagesService,
                 private productsService: ProductsService,
                 private categoriesService: CategoriesService,
                 private fb: FormBuilder,) {
@@ -81,14 +81,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         const body = this.epForm.value;
         this.s3 = this.productsService.editProduct(this.id, body)
             .subscribe((product: Product) => {
-                // if (product) {
-                //     this.ngFlashMessageService.showFlashMessage({
-                //         messages: ["Product edited!"],
-                //         dismissible: true,
-                //         timeout: 3000,
-                //         type: 'success'
-                //     });
-                // }
+                if (product) {
+                    this.flashMessagesService.show("Product edited!", {
+                        classes: ['alert', 'alert-success'], // You can pass as many classes as you need
+                        timeout: 3000, // Default is 3000
+                    });
+                }
             });
     }
 
